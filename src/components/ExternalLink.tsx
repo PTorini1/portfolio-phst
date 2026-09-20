@@ -5,6 +5,7 @@ type ExternalLinkProps = {
   href: string;
   className?: string;
   label?: string;
+  hideArrow?: boolean;
 };
 
 export function ExternalLink({
@@ -12,6 +13,7 @@ export function ExternalLink({
   href,
   className,
   label,
+  hideArrow = false,
 }: ExternalLinkProps) {
   return (
     <a
@@ -22,7 +24,7 @@ export function ExternalLink({
       aria-label={`${label ?? "Link externo"} - abre em nova aba`}
     >
       {children}
-      <span aria-hidden="true">↗</span>
+      {!hideArrow && <span aria-hidden="true">↗</span>}
     </a>
   );
 }

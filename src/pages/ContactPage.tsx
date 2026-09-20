@@ -19,20 +19,29 @@ export function ContactPage() {
                 href={channel.href}
                 label={channel.label}
                 className="contact-channel"
+                hideArrow
               >
                 <span className="contact-channel-label">{channel.label}</span>
-                <span className="contact-channel-value">{channel.value}</span>
+                <span className="contact-channel-details">
+                  <span className="contact-channel-value">{channel.value}</span>
+                  <span className="contact-channel-arrow" aria-hidden="true">
+                    ↗
+                  </span>
+                </span>
               </ExternalLink>
             ) : (
               <a
                 key={channel.id}
                 href={channel.href}
                 className="contact-channel"
+                aria-label={`${channel.label} - ${channel.value}`}
               >
                 <span className="contact-channel-label">{channel.label}</span>
-                <span className="contact-channel-value">
-                  {channel.value}
-                  <span aria-hidden="true"> ↗</span>
+                <span className="contact-channel-details">
+                  <span className="contact-channel-value">{channel.value}</span>
+                  <span className="contact-channel-arrow" aria-hidden="true">
+                    ↗
+                  </span>
                 </span>
               </a>
             )

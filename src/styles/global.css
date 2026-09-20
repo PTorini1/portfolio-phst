@@ -1019,7 +1019,7 @@ p {
   font-size: 1rem;
 }
 
-.contact-channel-value {
+.contact-channel-details {
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
@@ -1027,8 +1027,19 @@ p {
   font-size: 0.95rem;
 }
 
-.contact-channel:hover .contact-channel-value {
+.contact-channel-arrow {
+  display: inline-block;
+  color: var(--color-text-subtle);
+  transition: transform 0.15s ease, color 0.15s ease;
+}
+
+.contact-channel:hover .contact-channel-details {
   color: var(--color-accent);
+}
+
+.contact-channel:hover .contact-channel-arrow {
+  color: var(--color-accent);
+  transform: translate(2px, -2px);
 }
 
 @media (max-width: 920px) {
