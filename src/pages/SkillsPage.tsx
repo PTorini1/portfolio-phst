@@ -1,9 +1,11 @@
 import { Badge } from "../components/Badge";
 import { Section } from "../components/Section";
 import { skillsContent } from "../data/skills";
+import { useLocale } from "../i18n/locale";
 
 export function SkillsPage() {
-  const content = skillsContent["pt-BR"];
+  const { locale } = useLocale();
+  const content = skillsContent[locale];
 
   return (
     <Section eyebrow={content.eyebrow} title={content.title}>

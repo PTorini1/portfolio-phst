@@ -4,9 +4,14 @@ import { ExternalLink } from "../components/ExternalLink";
 import { ThemeToggle } from "../components/ThemeToggle";
 import { siteNavigation } from "../data/navigation";
 import { profile } from "../data/profile";
+import { useLocale } from "../i18n/locale";
+import { translations } from "../i18n/translations";
 
 export function SiteLayout() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { locale, setLocale } = useLocale();
+  const t = translations[locale];
+  const nav = siteNavigation[locale];
   const currentYear = new Date().getFullYear();
 
   const closeMenu = () => setIsMenuOpen(false);
@@ -27,8 +32,8 @@ export function SiteLayout() {
           type="button"
           aria-expanded={isMenuOpen}
           aria-controls="site-navigation"
-          aria-label={isMenuOpen ? "Fechar menu" : "Abrir menu"}
-          onClick={() => setIsMenuOpen((value) => !value)}
+          aria-label={isMenuOpen ? t.closeMenu : t.openMenu}
+          onClick={() => setIsMenuOpen((v) => !v)}
         >
           <span aria-hidden="true" />
           <span aria-hidden="true" />
@@ -38,9 +43,9 @@ export function SiteLayout() {
           <nav
             id="site-navigation"
             className="site-nav"
-            aria-label="Navegacao principal"
+            aria-label={t.navHome}
           >
-            {siteNavigation.map((item) => (
+            {nav.map((item) => (
               <NavLink
                 key={item.href}
                 to={item.href}
@@ -51,12 +56,22 @@ export function SiteLayout() {
               </NavLink>
             ))}
           </nav>
-          <div className="header-actions" aria-label="Preferencias">
-            <div className="language-switcher" aria-label="Selecionar idioma">
-              <button className="text-button is-active" type="button" aria-pressed="true">
+          <div className="header-actions" aria-label={t.preferences}>
+            <div className="language-switcher" aria-label={t.selectLanguage}>
+              <button
+                className={`text-button${locale === "pt-BR" ? " is-active" : ""}`}
+                type="button"
+                aria-pressed={locale === "pt-BR"}
+                onClick={() => { setLocale("pt-BR"); closeMenu(); }}
+              >
                 PT
               </button>
-              <button className="text-button" type="button" aria-pressed="false">
+              <button
+                className={`text-button${locale === "en-US" ? " is-active" : ""}`}
+                type="button"
+                aria-pressed={locale === "en-US"}
+                onClick={() => { setLocale("en-US"); closeMenu(); }}
+              >
                 EN
               </button>
             </div>
@@ -72,7 +87,7 @@ export function SiteLayout() {
           <p>
             <strong>{profile.name}</strong> © {currentYear}
           </p>
-          <nav className="footer-links" aria-label="Links externos">
+          <nav className="footer-links" aria-label={t.externalLinks}>
             <ExternalLink href={profile.linkedInUrl} label="LinkedIn">
               LinkedIn
             </ExternalLink>

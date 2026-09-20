@@ -3,9 +3,13 @@ import { ExternalLink } from "../components/ExternalLink";
 import { Section } from "../components/Section";
 import { aboutContent } from "../data/about";
 import { profile } from "../data/profile";
+import { useLocale } from "../i18n/locale";
+import { translations } from "../i18n/translations";
 
 export function AboutPage() {
-  const content = aboutContent["pt-BR"];
+  const { locale } = useLocale();
+  const content = aboutContent[locale];
+  const t = translations[locale];
 
   return (
     <>
@@ -21,7 +25,7 @@ export function AboutPage() {
 
       <Section className="section--compact">
         <div className="section-heading-row">
-          <p className="eyebrow">Tecnica</p>
+          <p className="eyebrow">{t.eyebrowTechnical}</p>
           <h2>{content.technicalTitle}</h2>
         </div>
         <div className="feature-grid">
@@ -37,7 +41,7 @@ export function AboutPage() {
       <Section className="section--compact">
         <div className="split-layout">
           <div>
-            <p className="eyebrow">Interesses</p>
+            <p className="eyebrow">{t.eyebrowInterests}</p>
             <h2>{content.interestsTitle}</h2>
           </div>
           <div className="badge-list" aria-label={content.interestsTitle}>
@@ -51,7 +55,7 @@ export function AboutPage() {
       <Section className="section--compact">
         <div className="split-layout">
           <div>
-            <p className="eyebrow">Contato</p>
+            <p className="eyebrow">{t.eyebrowContact}</p>
             <h2>{content.linksTitle}</h2>
           </div>
           <div className="link-list">

@@ -2,9 +2,11 @@ import { Badge } from "../components/Badge";
 import { ExternalLink } from "../components/ExternalLink";
 import { Section } from "../components/Section";
 import { projectsContent } from "../data/projects";
+import { useLocale } from "../i18n/locale";
 
 export function ProjectsPage() {
-  const content = projectsContent["pt-BR"];
+  const { locale } = useLocale();
+  const content = projectsContent[locale];
 
   return (
     <Section eyebrow={content.eyebrow} title={content.title}>

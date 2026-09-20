@@ -1,9 +1,11 @@
 import { Badge } from "../components/Badge";
 import { Section } from "../components/Section";
 import { experienceContent } from "../data/experience";
+import { useLocale } from "../i18n/locale";
 
 export function ExperiencePage() {
-  const content = experienceContent["pt-BR"];
+  const { locale } = useLocale();
+  const content = experienceContent[locale];
 
   return (
     <Section eyebrow={content.eyebrow} title={content.title}>
@@ -15,9 +17,7 @@ export function ExperiencePage() {
               <h3 className="experience-role">{item.role}</h3>
               <p className="experience-meta">
                 <span className="experience-company">{item.company}</span>
-                <span className="experience-separator" aria-hidden="true">
-                  ·
-                </span>
+                <span className="experience-separator" aria-hidden="true">·</span>
                 <span className="experience-period">{item.period}</span>
               </p>
             </div>

@@ -3,9 +3,11 @@ import { Container } from "../components/Container";
 import { ExternalLink } from "../components/ExternalLink";
 import { homeContent } from "../data/home";
 import { profile } from "../data/profile";
+import { useLocale } from "../i18n/locale";
 
 export function HomePage() {
-  const content = homeContent["pt-BR"];
+  const { locale } = useLocale();
+  const content = homeContent[locale];
 
   return (
     <>

@@ -88,3 +88,34 @@ export function getAllPosts(locale: Locale): PostMeta[] {
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
   );
 }
+
+/** Retorna o conteúdo completo de um post pelo slug e locale. */
+export function getPostBySlug(
+  slug: string,
+  locale: Locale
+): { meta: PostMeta; body: string } | null {
+  for (const [, raw] of Object.entries(modules)) {
+    if (typeof raw !== "string") continue;
+
+    const { frontmatter, body } = parseFrontmatter(raw);
+    if (frontmatter["slug"] !== slug) continue;
+    if (frontmatter["lang"] !== locale) continue;
+
+    return {
+      meta: {
+        title: String(frontmatter["title"] ?? ""),
+        description: String(frontmatter["description"] ?? ""),
+        date: String(frontmatter["date"] ?? ""),
+        tags: Array.isArray(frontmatter["tags"])
+          ? (frontmatter["tags"] as string[])
+          : [],
+        slug: String(frontmatter["slug"] ?? ""),
+        lang: String(frontmatter["lang"] ?? ""),
+        readingTime: estimateReadingTime(body),
+      },
+      body,
+    };
+  }
+  return null;
+}
+
