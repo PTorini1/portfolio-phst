@@ -236,6 +236,10 @@ a:hover {
   padding: var(--space-9) 0;
 }
 
+.section--compact {
+  padding-top: var(--space-7);
+}
+
 .hero-content {
   max-width: 760px;
 }
@@ -300,6 +304,13 @@ p {
   margin-top: var(--space-6);
 }
 
+.hero-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  margin-top: var(--space-5);
+}
+
 .button-link {
   display: inline-flex;
   min-height: 44px;
@@ -334,14 +345,54 @@ p {
 
 .badge-list,
 .link-list,
-.stack {
+.stack,
+.prose-block {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-3);
 }
 
-.stack {
+.stack,
+.prose-block {
   flex-direction: column;
+}
+
+.section-heading-row {
+  display: grid;
+  grid-template-columns: minmax(180px, 0.35fr) minmax(0, 1fr);
+  gap: var(--space-5);
+  margin-bottom: var(--space-5);
+}
+
+.section-heading-row .eyebrow {
+  margin: var(--space-2) 0 0;
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-5);
+}
+
+.feature-item {
+  border-top: var(--border);
+  padding-top: var(--space-4);
+}
+
+.feature-item h3 {
+  margin-bottom: var(--space-3);
+}
+
+.feature-item p {
+  color: var(--color-text-muted);
+  font-size: 1rem;
+}
+
+.split-layout {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.4fr) minmax(0, 1fr);
+  gap: var(--space-6);
+  align-items: start;
 }
 
 .badge {
@@ -357,7 +408,8 @@ p {
 }
 
 .link-list a,
-.footer-links a {
+.footer-links a,
+.hero-links a {
   display: inline-flex;
   align-items: center;
   gap: var(--space-1);
@@ -429,6 +481,15 @@ p {
     justify-content: space-between;
     padding-top: var(--space-3);
     border-top: var(--border);
+  }
+
+  .section-heading-row,
+  .split-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .feature-grid {
+    grid-template-columns: 1fr;
   }
 }
 
