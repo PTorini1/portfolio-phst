@@ -19,63 +19,65 @@ export function SiteLayout() {
   return (
     <div className="site-shell">
       <header className="site-header">
-        <Link
-          className="site-brand"
-          to="/"
-          aria-label="Pedro Torini - inicio"
-          onClick={closeMenu}
-        >
-          Pedro Torini
-        </Link>
-        <button
-          className="menu-button"
-          type="button"
-          aria-expanded={isMenuOpen}
-          aria-controls="site-navigation"
-          aria-label={isMenuOpen ? t.closeMenu : t.openMenu}
-          onClick={() => setIsMenuOpen((v) => !v)}
-        >
-          <span aria-hidden="true" />
-          <span aria-hidden="true" />
-          <span aria-hidden="true" />
-        </button>
-        <div className={`header-panel ${isMenuOpen ? "is-open" : ""}`}>
-          <nav
-            id="site-navigation"
-            className="site-nav"
-            aria-label={t.navHome}
+        <div className="container header-content">
+          <Link
+            className="site-brand"
+            to="/"
+            aria-label="Pedro Torini - início"
+            onClick={closeMenu}
           >
-            {nav.map((item) => (
-              <NavLink
-                key={item.href}
-                to={item.href}
-                onClick={closeMenu}
-                end={item.href === "/"}
-              >
-                {item.label}
-              </NavLink>
-            ))}
-          </nav>
-          <div className="header-actions" aria-label={t.preferences}>
-            <div className="language-switcher" aria-label={t.selectLanguage}>
-              <button
-                className={`text-button${locale === "pt-BR" ? " is-active" : ""}`}
-                type="button"
-                aria-pressed={locale === "pt-BR"}
-                onClick={() => { setLocale("pt-BR"); closeMenu(); }}
-              >
-                PT
-              </button>
-              <button
-                className={`text-button${locale === "en-US" ? " is-active" : ""}`}
-                type="button"
-                aria-pressed={locale === "en-US"}
-                onClick={() => { setLocale("en-US"); closeMenu(); }}
-              >
-                EN
-              </button>
+            Pedro Torini
+          </Link>
+          <button
+            className="menu-button"
+            type="button"
+            aria-expanded={isMenuOpen}
+            aria-controls="site-navigation"
+            aria-label={isMenuOpen ? t.closeMenu : t.openMenu}
+            onClick={() => setIsMenuOpen((v) => !v)}
+          >
+            <span aria-hidden="true" />
+            <span aria-hidden="true" />
+            <span aria-hidden="true" />
+          </button>
+          <div className={`header-panel ${isMenuOpen ? "is-open" : ""}`}>
+            <nav
+              id="site-navigation"
+              className="site-nav"
+              aria-label={t.navHome}
+            >
+              {nav.map((item) => (
+                <NavLink
+                  key={item.href}
+                  to={item.href}
+                  onClick={closeMenu}
+                  end={item.href === "/"}
+                >
+                  {item.label}
+                </NavLink>
+              ))}
+            </nav>
+            <div className="header-actions" aria-label={t.preferences}>
+              <div className="language-switcher" aria-label={t.selectLanguage}>
+                <button
+                  className={`text-button${locale === "pt-BR" ? " is-active" : ""}`}
+                  type="button"
+                  aria-pressed={locale === "pt-BR"}
+                  onClick={() => { setLocale("pt-BR"); closeMenu(); }}
+                >
+                  PT
+                </button>
+                <button
+                  className={`text-button${locale === "en-US" ? " is-active" : ""}`}
+                  type="button"
+                  aria-pressed={locale === "en-US"}
+                  onClick={() => { setLocale("en-US"); closeMenu(); }}
+                >
+                  EN
+                </button>
+              </div>
+              <ThemeToggle />
             </div>
-            <ThemeToggle />
           </div>
         </div>
       </header>

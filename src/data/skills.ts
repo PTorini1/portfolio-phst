@@ -37,7 +37,7 @@ export const skillsContent: Record<Locale, SkillsContent> = {
       {
         id: "database",
         name: "Banco de dados",
-        skills: ["SQL Server", "Redis"],
+        skills: ["SQL Server", "Redis", "Cosmos DB"],
       },
       {
         id: "devops",
@@ -111,7 +111,7 @@ export const skillsContent: Record<Locale, SkillsContent> = {
       {
         id: "database",
         name: "Database",
-        skills: ["SQL Server", "Redis"],
+        skills: ["SQL Server", "Redis", "Cosmos DB"],
       },
       {
         id: "devops",

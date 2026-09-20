@@ -15,6 +15,9 @@
   --color-accent-strong: #07514f;
   --color-accent-soft: #dff0ed;
   --color-focus: #2f7dd1;
+  --color-pattern-dots: rgba(23, 25, 29, 0.065);
+  --color-bg-glow: rgba(11, 111, 107, 0.065);
+  --color-badge-glow: rgba(11, 111, 107, 0.16);
 
   --space-1: 4px;
   --space-2: 8px;
@@ -56,6 +59,9 @@
   --color-accent-strong: #8fddd3;
   --color-accent-soft: #153936;
   --color-focus: #8ab4f8;
+  --color-pattern-dots: rgba(255, 255, 255, 0.05);
+  --color-bg-glow: rgba(96, 194, 182, 0.08);
+  --color-badge-glow: rgba(96, 194, 182, 0.25);
 }
 
 * {
@@ -71,6 +77,12 @@ body {
   min-width: 320px;
   min-height: 100vh;
   overflow-x: hidden;
+  background-color: var(--color-bg);
+  background-image:
+    radial-gradient(ellipse 70% 45% at 50% 0%, var(--color-bg-glow), transparent 70%),
+    radial-gradient(var(--color-pattern-dots) 1.2px, transparent 1.2px);
+  background-size: 100% 100%, 24px 24px;
+  background-repeat: no-repeat, repeat;
 }
 
 button,
@@ -117,15 +129,20 @@ a:hover {
   position: sticky;
   top: 0;
   z-index: 10;
+  width: 100%;
+  background-color: var(--color-bg);
+  background-image: radial-gradient(var(--color-pattern-dots) 1.2px, transparent 1.2px);
+  background-size: 24px 24px;
+  border-bottom: 1px solid color-mix(in srgb, var(--color-border) 60%, transparent);
+}
+
+.header-content {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: var(--space-5);
-  width: min(var(--container-width), calc(100% - (var(--container-gutter) * 2)));
-  margin: 0 auto;
-  padding: var(--space-5) 0;
-  background: color-mix(in srgb, var(--color-bg) 88%, transparent);
-  backdrop-filter: blur(14px);
+  padding: var(--space-4) 0;
+  position: relative;
 }
 
 .site-brand {
@@ -169,7 +186,7 @@ a:hover {
   padding: 3px;
   border: var(--border);
   border-radius: var(--radius-md);
-  background: var(--color-surface);
+  background: var(--color-bg);
 }
 
 .text-button,
@@ -202,7 +219,7 @@ a:hover {
   place-items: center;
   border: var(--border);
   border-radius: var(--radius-md);
-  background: var(--color-surface);
+  background: var(--color-bg);
   color: var(--color-text);
   font-size: 1.05rem;
 }
@@ -219,7 +236,7 @@ a:hover {
   place-items: center;
   border: var(--border);
   border-radius: var(--radius-md);
-  background: var(--color-surface);
+  background: var(--color-bg);
 }
 
 .menu-button span {
@@ -405,6 +422,19 @@ p {
   background: var(--color-surface);
   color: var(--color-text-muted);
   font-weight: 700;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+  user-select: none;
+}
+
+.badge:hover {
+  border-color: var(--color-accent);
+  color: var(--color-text);
+  box-shadow: 0 0 0 1px var(--color-accent), 0 4px 14px var(--color-badge-glow);
+  transform: translateY(-1px);
 }
 
 .link-list a,
@@ -1057,7 +1087,7 @@ p {
 
   .header-panel {
     position: absolute;
-    top: calc(100% - var(--space-3));
+    top: calc(100% + var(--space-2));
     right: 0;
     left: 0;
     display: none;
@@ -1066,7 +1096,10 @@ p {
     border: var(--border);
     border-radius: var(--radius-md);
     padding: var(--space-4);
-    background: var(--color-surface);
+    background-color: var(--color-bg);
+    background-image: radial-gradient(var(--color-pattern-dots) 1.2px, transparent 1.2px);
+    background-size: 24px 24px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
   }
 
   .header-panel.is-open {

@@ -3,9 +3,9 @@ import type { NavigationItem } from "../types/navigation";
 
 export const siteNavigation: Record<Locale, NavigationItem[]> = {
   "pt-BR": [
-    { href: "/", label: "Inicio" },
+    { href: "/", label: "Início" },
     { href: "/about", label: "Sobre" },
-    { href: "/experience", label: "Experiencia" },
+    { href: "/experience", label: "Experiência" },
     { href: "/skills", label: "Skills" },
     { href: "/projects", label: "Projetos" },
     { href: "/blog", label: "Blog" },
