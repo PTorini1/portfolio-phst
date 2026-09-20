@@ -1,19 +1,42 @@
 import { ExternalLink } from "../components/ExternalLink";
 import { Section } from "../components/Section";
-import { profile } from "../data/profile";
+import { contactContent } from "../data/contact";
+import { useLocale } from "../i18n/locale";
 
 export function ContactPage() {
+  const { locale } = useLocale();
+  const content = contactContent[locale];
+
   return (
-    <Section eyebrow="Contato" title="Vamos conversar">
+    <Section eyebrow={content.eyebrow} title={content.title}>
       <div className="stack">
-        <p className="lead-text">
-          Canais principais para conversas sobre desenvolvimento, arquitetura e
-          projetos.
-        </p>
-        <div className="link-list">
-          <ExternalLink href={profile.linkedInUrl}>LinkedIn</ExternalLink>
-          <ExternalLink href={profile.githubUrl}>GitHub</ExternalLink>
-          <a href={`mailto:${profile.email}`}>{profile.email}</a>
+        <p className="lead-text">{content.message}</p>
+        <div className="contact-channels" aria-label={content.title}>
+          {content.channels.map((channel) =>
+            channel.external ? (
+              <ExternalLink
+                key={channel.id}
+                href={channel.href}
+                label={channel.label}
+                className="contact-channel"
+              >
+                <span className="contact-channel-label">{channel.label}</span>
+                <span className="contact-channel-value">{channel.value}</span>
+              </ExternalLink>
+            ) : (
+              <a
+                key={channel.id}
+                href={channel.href}
+                className="contact-channel"
+              >
+                <span className="contact-channel-label">{channel.label}</span>
+                <span className="contact-channel-value">
+                  {channel.value}
+                  <span aria-hidden="true"> ↗</span>
+                </span>
+              </a>
+            )
+          )}
         </div>
       </div>
     </Section>

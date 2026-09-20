@@ -8,6 +8,24 @@
       content="Portfolio profissional e blog tecnico de Pedro Torini, desenvolvedor .NET/backend."
     />
     <title>Pedro Torini | Portfolio</title>
+    <!--
+      Script inline para aplicar o tema antes do primeiro render React,
+      evitando o flash perceptível de tema (FOUC).
+      Lê a preferência do localStorage ou do prefers-color-scheme do sistema.
+    -->
+    <script>
+      (function () {
+        var stored = localStorage.getItem("portfolio-theme");
+        var theme =
+          stored === "light" || stored === "dark"
+            ? stored
+            : window.matchMedia("(prefers-color-scheme: dark)").matches
+              ? "dark"
+              : "light";
+        document.documentElement.dataset.theme = theme;
+        document.documentElement.style.colorScheme = theme;
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
