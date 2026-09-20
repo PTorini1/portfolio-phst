@@ -2,10 +2,17 @@ import { Badge } from "../components/Badge";
 import { Section } from "../components/Section";
 import { experienceContent } from "../data/experience";
 import { useLocale } from "../i18n/locale";
+import { useSeo } from "../hooks/useSeo";
 
 export function ExperiencePage() {
   const { locale } = useLocale();
   const content = experienceContent[locale];
+
+  useSeo({
+    title: content.eyebrow,
+    description: content.description,
+    path: "/experience",
+  });
 
   const ariaResponsibilities =
     locale === "pt-BR" ? "Responsabilidades" : "Responsibilities";

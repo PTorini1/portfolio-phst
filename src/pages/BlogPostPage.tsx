@@ -6,6 +6,7 @@ import { useLocale } from "../i18n/locale";
 import { translations } from "../i18n/translations";
 import { renderMarkdown } from "../lib/markdown";
 import { getAllPosts, getPostBySlug } from "../lib/posts";
+import { useSeo } from "../hooks/useSeo";
 
 function formatDate(dateStr: string, locale: string): string {
   const date = new Date(`${dateStr}T00:00:00`);
@@ -25,6 +26,15 @@ export function BlogPostPage() {
     () => (slug ? getPostBySlug(slug, locale) : null),
     [slug, locale]
   );
+
+  useSeo({
+    title: post ? post.meta.title : t.postNotFound,
+    description: post?.meta.description ?? "",
+    type: "article",
+    path: slug ? `/blog/${slug}` : "/blog",
+    publishedTime: post?.meta.date,
+    tags: post?.meta.tags ?? [],
+  });
 
   const allPosts = useMemo(() => getAllPosts(locale), [locale]);
 

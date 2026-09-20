@@ -3,10 +3,17 @@ import { ExternalLink } from "../components/ExternalLink";
 import { Section } from "../components/Section";
 import { projectsContent } from "../data/projects";
 import { useLocale } from "../i18n/locale";
+import { useSeo } from "../hooks/useSeo";
 
 export function ProjectsPage() {
   const { locale } = useLocale();
   const content = projectsContent[locale];
+
+  useSeo({
+    title: content.eyebrow,
+    description: content.description,
+    path: "/projects",
+  });
 
   return (
     <Section eyebrow={content.eyebrow} title={content.title}>

@@ -2,10 +2,17 @@ import { ExternalLink } from "../components/ExternalLink";
 import { Section } from "../components/Section";
 import { contactContent } from "../data/contact";
 import { useLocale } from "../i18n/locale";
+import { useSeo } from "../hooks/useSeo";
 
 export function ContactPage() {
   const { locale } = useLocale();
   const content = contactContent[locale];
+
+  useSeo({
+    title: content.eyebrow,
+    description: content.message,
+    path: "/contact",
+  });
 
   return (
     <Section eyebrow={content.eyebrow} title={content.title}>

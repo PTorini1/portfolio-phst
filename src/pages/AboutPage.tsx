@@ -5,11 +5,18 @@ import { aboutContent } from "../data/about";
 import { profile } from "../data/profile";
 import { useLocale } from "../i18n/locale";
 import { translations } from "../i18n/translations";
+import { useSeo } from "../hooks/useSeo";
 
 export function AboutPage() {
   const { locale } = useLocale();
   const content = aboutContent[locale];
   const t = translations[locale];
+
+  useSeo({
+    title: content.eyebrow,
+    description: content.introduction[0] ?? content.title,
+    path: "/about",
+  });
 
   return (
     <>

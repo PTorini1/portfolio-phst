@@ -5,6 +5,7 @@ import { Section } from "../components/Section";
 import { useLocale } from "../i18n/locale";
 import { translations } from "../i18n/translations";
 import { getAllPosts } from "../lib/posts";
+import { useSeo } from "../hooks/useSeo";
 
 function formatDate(dateStr: string, locale: string): string {
   const date = new Date(`${dateStr}T00:00:00`);
@@ -18,6 +19,15 @@ function formatDate(dateStr: string, locale: string): string {
 export function BlogPage() {
   const { locale } = useLocale();
   const t = translations[locale];
+
+  useSeo({
+    title: locale === "pt-BR" ? "Blog" : "Blog",
+    description:
+      locale === "pt-BR"
+        ? "Artigos sobre .NET, Azure, arquitetura e investigação de problemas reais de engenharia de software."
+        : "Articles on .NET, Azure, architecture, and real engineering problem investigation.",
+    path: "/blog",
+  });
   const [activeTag, setActiveTag] = useState<string | null>(null);
 
   const allPosts = useMemo(() => getAllPosts(locale), [locale]);

@@ -4,10 +4,17 @@ import { ExternalLink } from "../components/ExternalLink";
 import { homeContent } from "../data/home";
 import { profile } from "../data/profile";
 import { useLocale } from "../i18n/locale";
+import { useSeo } from "../hooks/useSeo";
 
 export function HomePage() {
   const { locale } = useLocale();
   const content = homeContent[locale];
+
+  useSeo({
+    title: content.eyebrow,
+    description: content.summary,
+    path: "/",
+  });
 
   return (
     <>

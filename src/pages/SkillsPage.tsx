@@ -2,10 +2,17 @@ import { Badge } from "../components/Badge";
 import { Section } from "../components/Section";
 import { skillsContent } from "../data/skills";
 import { useLocale } from "../i18n/locale";
+import { useSeo } from "../hooks/useSeo";
 
 export function SkillsPage() {
   const { locale } = useLocale();
   const content = skillsContent[locale];
+
+  useSeo({
+    title: content.eyebrow,
+    description: content.description,
+    path: "/skills",
+  });
 
   return (
     <Section eyebrow={content.eyebrow} title={content.title}>

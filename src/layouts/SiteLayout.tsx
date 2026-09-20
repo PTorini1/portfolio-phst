@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, NavLink, Outlet } from "react-router-dom";
 import { ExternalLink } from "../components/ExternalLink";
 import { ThemeToggle } from "../components/ThemeToggle";
@@ -16,8 +16,22 @@ export function SiteLayout() {
 
   const closeMenu = () => setIsMenuOpen(false);
 
+  // Fecha o menu mobile ao pressionar a tecla Escape
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && isMenuOpen) {
+        setIsMenuOpen(false);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [isMenuOpen]);
+
   return (
     <div className="site-shell">
+      <a href="#main-content" className="skip-link">
+        {locale === "pt-BR" ? "Pular para o conteúdo principal" : "Skip to main content"}
+      </a>
       <header className="site-header">
         <div className="container header-content">
           <Link
@@ -81,7 +95,7 @@ export function SiteLayout() {
           </div>
         </div>
       </header>
-      <main className="site-main">
+      <main id="main-content" className="site-main" tabIndex={-1}>
         <Outlet />
       </main>
       <footer className="site-footer">
