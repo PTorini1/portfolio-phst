@@ -7,5 +7,5 @@ export const profile: Profile = {
     "Portfolio profissional e blog tecnico sobre desenvolvimento backend, arquitetura, Azure e investigacao de problemas reais de engenharia de software.",
   email: "email@exemplo.com",
   githubUrl: "https://github.com/",
-  linkedInUrl: "https://www.linkedin.com/",
+  linkedInUrl: "https://www.linkedin.com/in/pedro-torini-8a694b228/",
 };
