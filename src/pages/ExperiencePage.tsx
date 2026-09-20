@@ -1,12 +1,42 @@
+import { Badge } from "../components/Badge";
 import { Section } from "../components/Section";
+import { experienceContent } from "../data/experience";
 
 export function ExperiencePage() {
+  const content = experienceContent["pt-BR"];
+
   return (
-    <Section eyebrow="Experiencia" title="Experiencia profissional">
-      <p className="lead-text">
-        Esta area sera alimentada por dados separados da camada visual,
-        mantendo cargos, empresas e resultados organizados.
-      </p>
+    <Section eyebrow={content.eyebrow} title={content.title}>
+      <p className="lead-text">{content.description}</p>
+      <ol className="experience-list">
+        {content.items.map((item) => (
+          <li className="experience-item" key={`${item.role}-${item.company}`}>
+            <div className="experience-header">
+              <h3 className="experience-role">{item.role}</h3>
+              <p className="experience-meta">
+                <span className="experience-company">{item.company}</span>
+                <span className="experience-separator" aria-hidden="true">
+                  ·
+                </span>
+                <span className="experience-period">{item.period}</span>
+              </p>
+            </div>
+            <p className="experience-description">{item.description}</p>
+            <ul className="experience-responsibilities" aria-label="Responsabilidades">
+              {item.responsibilities.map((r) => (
+                <li key={r}>{r}</li>
+              ))}
+            </ul>
+            <div className="experience-tech" aria-label="Tecnologias">
+              <div className="badge-list">
+                {item.technologies.map((tech) => (
+                  <Badge key={tech}>{tech}</Badge>
+                ))}
+              </div>
+            </div>
+          </li>
+        ))}
+      </ol>
     </Section>
   );
 }

@@ -435,6 +435,115 @@ p {
   gap: var(--space-4);
 }
 
+/* Experience */
+
+.experience-list {
+  list-style: none;
+  margin: var(--space-7) 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.experience-item {
+  position: relative;
+  padding: var(--space-7) 0;
+  border-top: var(--border);
+}
+
+.experience-item:last-child {
+  padding-bottom: 0;
+}
+
+.experience-header {
+  margin-bottom: var(--space-4);
+}
+
+.experience-role {
+  margin-bottom: var(--space-2);
+}
+
+.experience-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--color-text-subtle);
+  font-size: 0.95rem;
+}
+
+.experience-company {
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+.experience-separator {
+  color: var(--color-border);
+}
+
+.experience-period {
+  font-variant-numeric: tabular-nums;
+}
+
+.experience-description {
+  max-width: 700px;
+  color: var(--color-text-muted);
+  font-size: 1.05rem;
+  margin-bottom: var(--space-5);
+}
+
+.experience-responsibilities {
+  list-style: none;
+  margin: 0 0 var(--space-5);
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  max-width: 700px;
+}
+
+.experience-responsibilities li {
+  position: relative;
+  padding-left: var(--space-5);
+  color: var(--color-text-muted);
+  font-size: 1rem;
+}
+
+.experience-responsibilities li::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  color: var(--color-accent);
+  font-weight: 700;
+}
+
+.experience-tech {
+  margin-top: var(--space-4);
+}
+
+/* Skills */
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-7) var(--space-6);
+  margin-top: var(--space-7);
+}
+
+.skill-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.skill-group-name {
+  font-size: 0.86rem;
+  font-weight: 800;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  color: var(--color-text-subtle);
+  margin-bottom: var(--space-1);
+}
+
 @media (max-width: 920px) {
   :root {
     --container-gutter: 20px;
@@ -489,6 +598,10 @@ p {
   }
 
   .feature-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .skills-grid {
     grid-template-columns: 1fr;
   }
 }
