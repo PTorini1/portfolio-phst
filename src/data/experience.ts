@@ -114,7 +114,7 @@ export const experienceContent: Record<Locale, ExperienceContent> = {
       "Proven track record in backend software engineering, asynchronous messaging architectures, observability, Azure cloud services, and high-scale process automation.",
     items: [
       {
-        role: "Software Developer",
+        role: "Software Engineer",
         company: "Sesi São Paulo",
         period: "Dec 2024 — present",
         description:
@@ -175,7 +175,7 @@ export const experienceContent: Record<Locale, ExperienceContent> = {
         ],
       },
       {
-        role: "Software Developer",
+        role: "Software Engineer",
         company: "Grupo Krona — Risk Management",
         period: "Mar 2022 — Jan 2024",
         description:

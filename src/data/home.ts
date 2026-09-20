@@ -57,10 +57,10 @@ export const homeContent: Record<Locale, HomeContent> = {
     ],
   },
   "en-US": {
-    eyebrow: ".NET / Backend Developer",
+    eyebrow: ".NET / Backend Software Engineer",
     title: "Pedro Torini",
     summary:
-      ".NET developer focused on backend, cloud, architecture, and solving real engineering problems.",
+      ".NET Software Engineer focused on backend, cloud, architecture, and solving real engineering problems.",
     primaryCta: "View experience",
     secondaryCta: "Read articles",
     tertiaryCta: "Get in touch",

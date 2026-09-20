@@ -57,9 +57,9 @@ export const aboutContent: Record<Locale, AboutContent> = {
   },
   "en-US": {
     eyebrow: "About",
-    title: "Backend developer focused on real-world problems",
+    title: "Backend Software Engineer focused on real-world problems",
     introduction: [
-      "I am a .NET developer with more than 4 years of experience, mainly working with C#/.NET, backend, APIs, SQL Server, Azure, messaging, observability, and service integration.",
+      "I am a .NET Software Engineer with more than 4 years of experience, mainly working with C#/.NET, backend, APIs, SQL Server, Azure, messaging, observability, and service integration.",
       "I like working close to the problem: understanding symptoms, investigating root causes, fixing bugs, and turning lessons learned into easier-to-maintain solutions.",
     ],
     technicalTitle: "Technical experience",
